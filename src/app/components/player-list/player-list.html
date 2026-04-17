@@ -1,0 +1,27 @@
+<div class="player-dashboard">
+  <h2>Table des Joueurs</h2>
+
+  @if (playerService.players().length === 0) {
+    <p>Aucun joueur à table.</p>
+  }
+
+  <div class="player-grid">
+    @for (player of playerService.players(); track player.id) {
+      <div class="player-card" [class.inactive]="!player.isActive">
+        <div class="player-info">
+          <strong>{{ player.name }}</strong> (Pos: {{ player.position }})
+          <br>
+          <span>Statut: {{ player.isActive ? '✅ Actif' : '❌ Inactif' }}</span>
+        </div>
+        
+        <div class="player-actions">
+          <button (click)="consoleLogPlayer(player)">Log Info</button>
+          
+          <button (click)="onToggle(player.id)">
+            {{ player.isActive ? 'Désactiver' : 'Activer' }}
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+</div>

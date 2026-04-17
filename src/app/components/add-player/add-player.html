@@ -1,0 +1,9 @@
+<div class="add-player-box">
+  <h3>➕ Ajouter un joueur à la table</h3>
+  
+  <div class="form-group">
+    <input type="text" [(ngModel)]="name" placeholder="Nom du joueur">
+    <input type="number" [(ngModel)]="position" placeholder="Position (1-9)">
+    <button (click)="onSubmit()" [disabled]="!name">Ajouter</button>
+  </div>
+</div>
